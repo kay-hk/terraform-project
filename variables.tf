@@ -17,3 +17,13 @@ variable "instance_type" {
   type        = string
   description = "The instance type of EC2 to create"
 }
+
+variable "cidr_0" {
+  type = string
+  description = "CIDR block of 0.0.0.0/0"
+}
+
+variable "cird_16" {
+  type = string
+  description = "CIDR block of 10.0.0.0/16"
+}
