@@ -1,5 +1,5 @@
 resource "aws_vpc" "terraform_vpc" {
-  cidr_block       = "10.0.0.0/16"
+  cidr_block       = var.cird_16
   instance_tenancy = "default"
   enable_dns_hostnames = true
 
@@ -68,7 +68,7 @@ resource "aws_route_table" "public_route_table" {
   vpc_id = aws_vpc.terraform_vpc.id
 
   route {
-    cidr_block     = "0.0.0.0/0"
+    cidr_block     = var.cidr_0
     gateway_id      = aws_internet_gateway.terraform-internet-gateway.id
   }
 
@@ -83,7 +83,7 @@ resource "aws_route_table" "private_route_table" {
   vpc_id = aws_vpc.terraform_vpc.id
 
   route {
-    cidr_block     = "0.0.0.0/0"
+    cidr_block     = var.cidr_0
     nat_gateway_id = aws_nat_gateway.terraform_nat_gateway.id
   }
 
