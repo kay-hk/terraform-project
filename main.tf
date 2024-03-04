@@ -14,18 +14,12 @@ module "sg" {
   cird_16 = var.cird_16
 }
 
-module "lighting_dynamodb" {
-  source       = "./modules/dynamo" 
-  table_name   = "Lighting"
-  hash_key     = "id"
-  hash_key_type = "N" 
-}
+module "dynamodb" {
+  source = "./modules/dynamo"
 
-module "heating_dynamodb" {
-  source       = "./modules/dynamo"
-  table_name   = "Heating"
-  hash_key     = "id"
-  hash_key_type = "N" 
+  table_names = var.table_names
+  hash_key     = var.hash_key
+  hash_key_type = var.hash_key_type
 }
 
 module "ec2" {

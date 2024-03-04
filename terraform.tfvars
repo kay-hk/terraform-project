@@ -4,3 +4,6 @@ azs = ["eu-west-2a","eu-west-2b","eu-west-2c"]
 instance_type = "t2.micro"
 cidr_0 = "0.0.0.0/0"
 cird_16 = "10.0.0.0/16"
+table_names   = ["Lighting", "Heating"]
+hash_key      = "id"
+hash_key_type = "N"

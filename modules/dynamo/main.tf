@@ -1,5 +1,7 @@
 resource "aws_dynamodb_table" "dynamodb_table" {
-  name           = var.table_name
+  count = length(var.table_names)
+
+  name           = var.table_names[count.index]
   billing_mode   = "PAY_PER_REQUEST"
   hash_key       = var.hash_key
   attribute {

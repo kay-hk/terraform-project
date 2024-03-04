@@ -1,6 +1,6 @@
-variable "table_name" {
-  description = "Name of the DynamoDB table"
-  type        = string
+variable "table_names" {
+  description = "Names of the DynamoDB tables"
+  type        = list(string)
 }
 
 variable "hash_key" {
