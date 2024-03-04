@@ -13,3 +13,17 @@ module "sg" {
   cidr_0 = var.cidr_0
   cird_16 = var.cird_16
 }
+
+module "lighting_dynamodb" {
+  source       = "./modules/dynamo" 
+  table_name   = "Lighting"
+  hash_key     = "id"
+  hash_key_type = "N" 
+}
+
+module "heating_dynamodb" {
+  source       = "./modules/dynamo"
+  table_name   = "Heating"
+  hash_key     = "id"
+  hash_key_type = "N" 
+}
