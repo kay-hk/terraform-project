@@ -18,3 +18,8 @@ variable "cird_16" {
   type = string
   description = "CIDR block of 10.0.0.0/16"
 }
+
+variable "app_port" {
+  type = number
+  description = "The port apps listen on"
+}

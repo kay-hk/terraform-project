@@ -6,6 +6,12 @@ azs = ["eu-west-2a","eu-west-2b","eu-west-2c"]
 
 instance_type = "t2.micro"
 
+#Ports
+app_port = 3000
+
+#Protocols
+http_protocol = "HTTP"
+
 #CIDRs
 cidr_0 = "0.0.0.0/0"
 cird_16 = "10.0.0.0/16"

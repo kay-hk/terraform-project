@@ -8,8 +8,8 @@ resource "aws_security_group" "allow_http" {
 #Rule to allow incoming connection on port 3000
 resource "aws_security_group_rule" "allow_local" {
   type              = "ingress"
-  from_port         = 3000
-  to_port           = 3000
+  from_port         = var.app_port
+  to_port           = var.app_port
   protocol          = "tcp"
   cidr_blocks       = [var.cidr_0]
   ipv6_cidr_blocks  = ["::/0"]

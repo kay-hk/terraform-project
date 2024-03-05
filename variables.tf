@@ -28,6 +28,17 @@ variable "cird_16" {
   description = "CIDR block of 10.0.0.0/16"
 }
 
+variable "http_protocol" {
+    description = "HTTP protocol type"
+    type        = string
+}
+
+
+variable "app_port" {
+  type = number
+  description = "The port apps listen on"
+}
+
 variable "table_names" {
   description = "Names of the DynamoDB tables"
   type        = list(string)
