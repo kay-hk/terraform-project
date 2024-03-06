@@ -8,22 +8,22 @@ resource "aws_security_group" "allow_http" {
 #Rule to allow incoming connection on port 3000
 resource "aws_security_group_rule" "allow_local" {
   type              = "ingress"
-  from_port         = 3000
-  to_port           = 3000
+  from_port         = var.app_port
+  to_port           = var.app_port
   protocol          = "tcp"
   cidr_blocks       = [var.cidr_0]
-  ipv6_cidr_blocks  = ["::/0"]
+  ipv6_cidr_blocks  = [var.ipv6_cidr_block]
   security_group_id = aws_security_group.allow_http.id
 }
 
 #Rule to allow incoming HTTP connections 
 resource "aws_security_group_rule" "allow_http_ingress" {
   type              = "ingress"
-  from_port         = 80
-  to_port           = 80
+  from_port         = var.http_port
+  to_port           = var.http_port
   protocol          = "tcp"
   cidr_blocks       = [var.cidr_0]
-  ipv6_cidr_blocks  = ["::/0"]
+  ipv6_cidr_blocks  = [var.ipv6_cidr_block]
   security_group_id = aws_security_group.allow_http.id
 }
 
@@ -34,7 +34,7 @@ resource "aws_security_group_rule" "allow_http_egress" {
   to_port           = 0
   protocol          = -1
   cidr_blocks       = [var.cidr_0]
-  ipv6_cidr_blocks  = ["::/0"]
+  ipv6_cidr_blocks  = [var.ipv6_cidr_block]
   security_group_id = aws_security_group.allow_http.id
 }
 
@@ -48,11 +48,11 @@ resource "aws_security_group" "allow_https" {
 #Rule to allow incoming HTTPS connections 
 resource "aws_security_group_rule" "allow_https_ingress" {
   type              = "ingress"
-  from_port         = 443
-  to_port           = 443
+  from_port         = var.https_port
+  to_port           = var.https_port
   protocol          = "tcp"
   cidr_blocks       = [var.cidr_0]
-  ipv6_cidr_blocks  = ["::/0"]
+  ipv6_cidr_blocks  = [var.ipv6_cidr_block]
   security_group_id = aws_security_group.allow_https.id
 }
 
@@ -63,7 +63,7 @@ resource "aws_security_group_rule" "allow_https_egress" {
   to_port           = 65535
   protocol          = -1
   cidr_blocks       = [var.cidr_0]
-  ipv6_cidr_blocks  = ["::/0"]
+  ipv6_cidr_blocks  = [var.ipv6_cidr_block]
   security_group_id = aws_security_group.allow_https.id
 }
 
@@ -77,10 +77,10 @@ resource "aws_security_group" "allow_ssh" {
 #Rule to allow incoming SSH connection from one IP
 resource "aws_security_group_rule" "allow_ssh" {
   type              = "ingress"
-  from_port         = 22
-  to_port           = 22
+  from_port         = var.ssh_port
+  to_port           = var.ssh_port
   protocol          = "tcp"
   cidr_blocks       = [var.ssh_cidr, var.cird_16]
-  ipv6_cidr_blocks  = ["::/0"]
+  ipv6_cidr_blocks  = [var.ipv6_cidr_block]
   security_group_id = aws_security_group.allow_ssh.id
 }

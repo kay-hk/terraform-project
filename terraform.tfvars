@@ -6,9 +6,18 @@ azs = ["eu-west-2a","eu-west-2b","eu-west-2c"]
 
 instance_type = "t2.micro"
 
+#Ports
+app_port = 3000
+http_port = 80
+https_port = 443
+
+#Protocols
+http_protocol = "HTTP"
+
 #CIDRs
 cidr_0 = "0.0.0.0/0"
 cird_16 = "10.0.0.0/16"
+ipv6_cidr_block = "::/0"
 
 #DynamoDB
 table_names   = ["Lighting", "Heating"]
