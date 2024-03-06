@@ -43,9 +43,5 @@ module "lb" {
   app_port = var.app_port
   http_port = var.http_port
   http_protocol = var.http_protocol
-  # status_instance_id = module.ec2.status_instance_id
-  # auth_instance_id = module.ec2.auth_instance_id
-  # lighting_instance_id = module.ec2.lighting_instance_id  
-  # heating_instance_id = module.ec2.heating_instance_id
   instance_ids = module.ec2.instance_ids
 }
