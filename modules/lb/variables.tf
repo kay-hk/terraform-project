@@ -15,6 +15,11 @@ variable "app_port" {
   description = "The port apps listen on"
 }
 
+variable "http_port" {
+  type = number
+  description = "HTTP port 80"
+}
+
 variable "security_group_ids" {
   description = "List of security group IDs"
   type        = list(string)
@@ -25,11 +30,11 @@ variable "http_protocol" {
     type        = string
 }
 
-variable "public_target_group_names" {
-    description = "value"
-    type = list(string)
-    default = ["lighting", "heating", "status"]
-}
+# variable "public_target_groups" {
+#     description = "value"
+#     type = list(string)
+#     default = ["lighting", "heating", "status"]
+# }
 
 variable "lighting_instance_id" {
     type = string
