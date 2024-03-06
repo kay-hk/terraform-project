@@ -1,3 +1,8 @@
+variable "key_pair" {
+  type = string
+  description = "SSH key for instance pair"
+}
+
 variable "public_subnets" {
   type        = list(string)
   description = "A list of the CIDR ranges required for the public subnets"

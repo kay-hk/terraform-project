@@ -1,25 +1,3 @@
-//lb
-//targetgroups
-//attachemnts
-
-#Looping solutions, but not sure how to implement some parts. Might look at later in depth. 
-# #Public target groups
-# resource "aws_lb_target_group" "public_target_groups" {
-#   count = length(var.public_target_groups)
-#   name =  "${var.public_target_groups[count.index]}-target-group"
-#   port     = var.app_port
-#   protocol = var.http_protocol
-#   vpc_id   = var.vpc_id
-# }
-
-# #Target group attachments
-# resource "aws_lb_target_group_attachment" "target_group_attachments" {
-#   count            = length(var.public_target_groups)
-#   target_group_arn = aws_lb_target_group.public_target_groups[count.index].arn
-#   target_id        = var.public_target_groups[count.index].instance_id
-#   port             = var.app_port
-# }
-
 # Target Groups for each service
 resource "aws_lb_target_group" "lighting_target_group" {
   name     = "lighting-target-group"
@@ -71,26 +49,26 @@ resource "aws_lb_target_group" "auth_target_group" {
 # Target group attachments for each service
 resource "aws_lb_target_group_attachment" "lighting_target_group_attachment" {
   target_group_arn = aws_lb_target_group.lighting_target_group.arn
-  target_id        = var.lighting_instance_id
+  target_id        = var.instance_ids[0]
   port             = var.app_port #the port app runs on
 }
 
 resource "aws_lb_target_group_attachment" "heating_target_group_attachment" {
   target_group_arn = aws_lb_target_group.heating_target_group.arn
-  target_id        = var.heating_instance_id
+  target_id        = var.instance_ids[1]
   port             = var.app_port
 }
 
 resource "aws_lb_target_group_attachment" "status_target_group_attachment" {
   target_group_arn = aws_lb_target_group.status_target_group.arn
-  target_id        = var.status_instance_id
+  target_id        = var.instance_ids[2]
   port             = var.app_port
 }
 
 
 resource "aws_lb_target_group_attachment" "auth_target_group_attachment" {
   target_group_arn = aws_lb_target_group.auth_target_group.arn
-  target_id        = var.auth_instance_id
+  target_id        = var.instance_ids[3]
   port             = var.app_port
 }
 

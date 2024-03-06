@@ -6,6 +6,9 @@ azs = ["eu-west-2a","eu-west-2b","eu-west-2c"]
 
 instance_type = "t2.micro"
 
+#Key-Pair for SSH 
+key_pair = "cloud-project"
+
 #Ports
 app_port = 3000
 http_port = 80
