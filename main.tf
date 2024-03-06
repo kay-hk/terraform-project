@@ -45,3 +45,21 @@ module "lb" {
   http_protocol = var.http_protocol
   instance_ids = module.ec2.instance_ids
 }
+
+module "launch_templates" {
+  source = "./modules/launch_tempates"
+  depends_on = [ module.vpc ]
+  key_pair = var.key_pair
+  azs = var.azs
+  instance_type = var.instance_type
+  public_subnet_ids = module.vpc.public_subnets_ids
+  private_subnet_ids = module.vpc.private_subnets_ids
+  security_group_ids = module.sg.security_group_ids
+}
+
+module "autoscaling" {
+  source = "./modules/autoscaling"
+  depends_on = [ module.launch_templates ]
+  template_ids = module.launch_templates.template_ids
+  target_group_arns = module.lb.target_group_arns
+}

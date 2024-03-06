@@ -27,8 +27,3 @@ variable "azs" {
   type        = list(string)
   description = "A list of the Availability Zones you wish to provision infrastructure in"
 }
-
-variable "public_launch_templates" {
-  type = list(string)
-  description = "List of templates to create from instances"
-}

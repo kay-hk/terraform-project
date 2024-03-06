@@ -4,14 +4,17 @@ variable "template_ids" {
 
 variable "desired_capacity" {
   type = number
+  default = 1
 }
 
 variable "max_size" {
   type = number
+  default = 3
 }
 
 variable "min_size" {
   type = number
+  default = 2
 }
 
 variable "target_group_arns" {

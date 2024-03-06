@@ -5,7 +5,7 @@ resource "aws_autoscaling_group" "lighting_autoscaling_group" {
   min_size             = var.min_size
   
   launch_template {
-    id      = [var.template_ids[0]]
+    id      = var.template_ids[0]
     version = "$Latest"
   }
 }
@@ -23,7 +23,7 @@ resource "aws_autoscaling_group" "heating_autoscaling_group" {
   min_size             = var.min_size
   
   launch_template {
-    id      = [var.template_ids[1]]
+    id      = var.template_ids[1]
     version = "$Latest"
   }
 }
@@ -41,7 +41,7 @@ resource "aws_autoscaling_group" "status_autoscaling_group" {
   min_size             = var.min_size
   
   launch_template {
-    id      = [var.template_ids[2]]
+    id      = var.template_ids[2]
     version = "$Latest"
   }
 }
@@ -59,7 +59,7 @@ resource "aws_autoscaling_group" "auth_autoscaling_group" {
   min_size             = var.min_size
   
   launch_template {
-    id      = [var.template_ids[3]]
+    id      = var.template_ids[3]
     version = "$Latest"
   }
 }
