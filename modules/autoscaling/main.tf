@@ -1,5 +1,6 @@
 #Lighting autoscaling
 resource "aws_autoscaling_group" "lighting_autoscaling_group" {
+  name = "lighting"
   desired_capacity     = var.desired_capacity
   max_size             = var.max_size
   min_size             = var.min_size
@@ -18,6 +19,7 @@ resource "aws_autoscaling_attachment" "lighting_autoscaling_attachment" {
 
 #Heating autoscaling
 resource "aws_autoscaling_group" "heating_autoscaling_group" {
+  name = "heating"
   desired_capacity     = var.desired_capacity
   max_size             = var.max_size
   min_size             = var.min_size
@@ -36,6 +38,7 @@ resource "aws_autoscaling_attachment" "heating_autoscaling_attachment" {
 
 #Status autoscaling
 resource "aws_autoscaling_group" "status_autoscaling_group" {
+  name = "status"
   desired_capacity     = var.desired_capacity
   max_size             = var.max_size
   min_size             = var.min_size
@@ -54,6 +57,7 @@ resource "aws_autoscaling_attachment" "status_autoscaling_attachment" {
 
 #Auth autoscaling
 resource "aws_autoscaling_group" "auth_autoscaling_group" {
+  name = "auth"
   desired_capacity     = var.desired_capacity
   max_size             = var.max_size
   min_size             = var.min_size

@@ -4,7 +4,7 @@ variable "template_ids" {
 
 variable "desired_capacity" {
   type = number
-  default = 1
+  default = 2
 }
 
 variable "max_size" {
