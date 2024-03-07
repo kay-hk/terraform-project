@@ -27,6 +27,7 @@ module "dynamodb" {
 
 module "ec2" {
   source = "./modules/servers"
+  key_pair = var.key_pair
   security_group_ids = module.sg.security_group_ids
   public_subnet_ids = module.vpc.public_subnets_ids
   private_subnet_ids = module.vpc.private_subnets_ids
@@ -42,8 +43,23 @@ module "lb" {
   app_port = var.app_port
   http_port = var.http_port
   http_protocol = var.http_protocol
-  status_instance_id = module.ec2.status_instance_id
-  auth_instance_id = module.ec2.auth_instance_id
-  lighting_instance_id = module.ec2.lighting_instance_id  
-  heating_instance_id = module.ec2.heating_instance_id
+  instance_ids = module.ec2.instance_ids
+}
+
+module "launch_templates" {
+  source = "./modules/launch_tempates"
+  depends_on = [ module.vpc ]
+  key_pair = var.key_pair
+  azs = var.azs
+  instance_type = var.instance_type
+  public_subnet_ids = module.vpc.public_subnets_ids
+  private_subnet_ids = module.vpc.private_subnets_ids
+  security_group_ids = module.sg.security_group_ids
+}
+
+module "autoscaling" {
+  source = "./modules/autoscaling"
+  depends_on = [ module.launch_templates ]
+  template_ids = module.launch_templates.template_ids
+  target_group_arns = module.lb.target_group_arns
 }
