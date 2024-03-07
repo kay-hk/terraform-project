@@ -27,3 +27,13 @@ variable "azs" {
   type        = list(string)
   description = "A list of the Availability Zones you wish to provision infrastructure in"
 }
+
+variable "image_ids" {
+  type = list(string)
+  default = [
+    "ami-06d16139a947bb7d5",
+    "ami-080024a0edfd533fc",
+    "ami-0a05e4302a6a0ee80",
+    "ami-0d1fd218411d963c3",
+  ]
+}

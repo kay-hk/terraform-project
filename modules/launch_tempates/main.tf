@@ -1,7 +1,8 @@
+# Individual launch templates
 resource "aws_launch_template" "lighting_launch_template" {
   name = "lighting-launch-template"
 
-  image_id = "ami-099edd0ef84e6fa56"
+  image_id = var.image_ids[0]
   instance_type = var.instance_type
   key_name = var.key_pair
 
@@ -19,7 +20,7 @@ resource "aws_launch_template" "lighting_launch_template" {
 resource "aws_launch_template" "heating_launch_template" {
   name = "heating-launch-template"
 
-  image_id = "ami-056fe5fff88b9ab7b"
+  image_id = var.image_ids[1]
   instance_type = var.instance_type
   key_name = var.key_pair
 
@@ -37,7 +38,7 @@ resource "aws_launch_template" "heating_launch_template" {
 resource "aws_launch_template" "status_launch_template" {
   name = "status-launch-template"
 
-  image_id = "ami-0d8cc99a168031500"
+  image_id = var.image_ids[2]
   instance_type = var.instance_type
   key_name = var.key_pair
 
@@ -55,7 +56,7 @@ resource "aws_launch_template" "status_launch_template" {
 resource "aws_launch_template" "auth_launch_template" {
   name = "auth-launch-template"
 
-  image_id = "ami-06773d1a706caad2f"
+  image_id = var.image_ids[3]
   instance_type = var.instance_type
   key_name = var.key_pair
 

@@ -112,7 +112,7 @@ default_action {
 
     condition {
       path_pattern {
-        values = ["/api/lighting*"]
+        values = ["/api/lights*"]
       }
     }
   }
